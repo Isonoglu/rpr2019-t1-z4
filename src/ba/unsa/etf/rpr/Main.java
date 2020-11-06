@@ -58,7 +58,6 @@ public class Main {
                     if(a != null){
                         if(korpa.dodajArtikl(a)) System.out.println("Artikl dodan u korpu.");
                         else {
-                            supermarket.dodajArtikl(a);
                             System.out.println("Korpa je puna, artikl nije dodan!");
                         }
                     }
@@ -72,6 +71,7 @@ public class Main {
                 kod = scanner.nextLine();
                 if(!kod.equals("c")){
                     Artikl a = korpa.izbaciArtiklSaKodom(kod);
+                    System.out.println(a.getKod());
                     if(a != null){
                         supermarket.dodajArtikl(a);
                     }

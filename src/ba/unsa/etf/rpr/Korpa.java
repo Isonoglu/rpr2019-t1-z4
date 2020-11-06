@@ -6,33 +6,38 @@ public class Korpa {
     private Artikl[] artikli = new Artikl[50];
 
     public boolean dodajArtikl(Artikl noviArtikl) {
-        artikli[brojacArtikala] = noviArtikl;
-        brojacArtikala = brojacArtikala + 1;
-        return false;
-    }
+        if(brojacArtikala > 50)
+            return false;
 
+        artikli[brojacArtikala] = new Artikl(noviArtikl.getNaziv(), noviArtikl.getCijena(), noviArtikl.getKod());
+        brojacArtikala = brojacArtikala + 1;
+        return true;
+    }
 
     public Artikl[] getArtikli() {
         return artikli;
     }
 
     public Artikl izbaciArtiklSaKodom(String kod) {
-        int indeksArtiklaKojiSeVracaIzFunkcije = 0;
+        Artikl povratakMetode = null;
         for(int i = 0; i < brojacArtikala; i++) {
             if(artikli[i].getKod().equals(kod)){
-                indeksArtiklaKojiSeVracaIzFunkcije = i;
+                povratakMetode = artikli[i];
                 for(int j = i; j < brojacArtikala - 1; j++) {
                     artikli[j] = artikli[j + 1];
                 }
             }
         }
-        return artikli[indeksArtiklaKojiSeVracaIzFunkcije];
+        artikli[brojacArtikala - 1] = null;
+        brojacArtikala = brojacArtikala - 1;
+        return povratakMetode;
     }
+
 
     public int dajUkupnuCijenuArtikala() {
         int ukupnaCijanaArtikala = 0;
-        for(Artikl x : artikli){
-            ukupnaCijanaArtikala = ukupnaCijanaArtikala + x.getCijena();
+        for (int i = 0; i < brojacArtikala; i++) {
+            ukupnaCijanaArtikala = ukupnaCijanaArtikala + artikli[i].getCijena();
         }
         return ukupnaCijanaArtikala;
     }

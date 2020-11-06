@@ -15,23 +15,12 @@ public class Artikl {
         return naziv;
     }
 
-    public void setNaziv(String nazivArtikla) {
-        this.naziv = nazivArtikla;
-    }
-
     public String getKod() {
         return kod;
-    }
-
-    public void setKod(String kodArtikla) {
-        this.kod = kodArtikla;
     }
 
     public int getCijena() {
         return cijena;
     }
 
-    public void setCijena(int cijenaArtikla) {
-        this.cijena = cijenaArtikla;
-    }
 }
